@@ -2,6 +2,7 @@
 
 body {
   font-family: "Lato", sans-serif;
+  padding-right: 0px;
 }
 
 h2 {
@@ -54,7 +55,7 @@ main img {
 
 header {
   background-color: #ff385c;
-  padding: 20px 20px 20px 20px;
+  padding: 20px 20px 0 20px;
   text-align: center;
 }
 
@@ -64,23 +65,30 @@ header {
   color: #fff;
 }
 
-header nav ul {
+header nav {
   display: flex;
   justify-content: center;
 }
 
+header nav ul {
+  display: flex; /* by default diplays 'flex-direction' in single row */
+  padding-left: 0;
+  list-style: none;
+}
+
 header nav ul li {
-  list-style-type: none;
+  display: flex;
+  padding-left: 0;
+  list-style-type: none; /* removes bullet points */
 }
 
 header nav ul li a {
   color: #fff;
-  text-decoration: none;
-  padding: 0 20px 0 0;
-}
-
-header nav ul li:last-child a {
-  margin-right: 20px;
+  text-decoration: none; /* removes underline from link*/
+  /* padding: 0 20px 0 0; */
+  /* display: flex;
+  justify-content: space-between; */
+  padding-left: 15px;
 }
 
 header nav ul li a:hover {
@@ -88,24 +96,51 @@ header nav ul li a:hover {
   text-decoration: none;
 }
 
+.col {
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 33px;
+}
+
+.second-column {
+  width: 100%;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+section {
+  padding: 18px;
+  flex-direction: column;
+}
+
+img {
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+
 /* -------  Search Form ------- */
 form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   border: 2px solid #ff385c;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 form label {
   font-weight: bold;
+  /* justify-content: flex-start; */
 }
 
 form select,
 form input {
   margin-bottom: 20px;
-  width: 65%;
-  float: right;
+  /* width: 110px; */
+  /* width: auto; */
+  display: flex;
+  flex-wrap: wrap;
 }
 
 form button {
@@ -115,6 +150,12 @@ form button {
   font-size: 24px;
   padding: 15px;
   width: 100%;
+}
+
+form > div {
+  /* what does 'form > div' mean??? */
+  display: flex;
+  justify-content: space-between;
 }
 
 /* -------  Footer ------- */
@@ -129,56 +170,108 @@ footer p {
   padding: 20px;
 }
 
+
+
 /* -------  Media Query ------- */
 
-@media all and (min-width: 600px) {
+/* 600px looked good but i got downgraded for not having 480px requirement. */
+@media all and (min-width: 480px) {
+  body {
+    padding-right: 0px;
+  }
+
   header {
-    background-color: #ff385c;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
   }
 
-  header nav {
-    padding: 10px;
+  #menu {
+    font-size: 80%;
   }
 
   form {
+    /* display: flex;
+    flex-wrap: wrap; */
     flex-direction: row;
+    justify-content: space-between;
+    font-size: 50%;
   }
 
-  .group {
+  form label {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-flow: row nowrap;
+    padding-right: 10px;
+  }
+
+  /* form input {
+    width: 80px;
+    font-size: small;
+  } */
+
+  form > div {
+    display: inline-flex;
+    justify-content: space-between;
+  }
+
+  form button {
+    width: auto;
+    display: inline-flex;
+    justify-content: flex-end;
+    /* margin-left: 100px; */
+    /* font-size: small; */
+  }
+
+  .criteria {
+    flex-direction: column;
+  }
+
+  .row {
+    display: flex;
+  }
+
+  #ideas .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .col {
+    padding-top: 20px;
+    padding-bottom: 0px;
+  }
+
+  .column {
+    flex: 33.33%; /*could also use 1 (as in 1:1:1 ratio)??? */
+    margin: auto 0;
+    margin-left: 15px;
+    font-size: small;
     align-items: center;
   }
 
-  .vacation-form .item {
-    display: flex block;
-    flex: 1 1 auto;
-    flex-direction: column;
-  }
-
-  .item label,
-  .item input,
-  .item select,
-  .item button {
-    display: flex;
-    width: 100%;
-  }
-
-  .grid-column {
+  .area-single {
     display: flex;
     flex: 1;
-    flex-direction: column;
-    margin: 10px;
   }
 
-  .grid-row {
+  .area-double {
     display: flex;
-    flex: 1;
+    flex: 2;
+  }
+
+  /* ------- ideas -------*/
+
+  .about-host-background h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
+
+@media all and (min-width: 700px) {
+  form {
+    /* display: flex;
+    flex-wrap: wrap; */
     flex-direction: row;
+    justify-content: space-between;
+    font-size: 100%;
   }
 }
